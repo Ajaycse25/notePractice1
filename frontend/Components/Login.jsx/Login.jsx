@@ -18,12 +18,12 @@ const handleChange = (e) => {
 const handleClick = async (e) => {
   e.preventDefault();
   try {
-    const res = await axios.post('http://localhost:3000/login', formData , {   withCredentials: true});
+    const res = await axios.post('https://notepractice1-1.onrender.com/login', formData , {   withCredentials: true});
     console.log('Login successful:', res.data);
     
     setFormData({ email: '', password: '' });
 
-      const verifyRes = await axios.get('http://localhost:3000/verify', {
+      const verifyRes = await axios.get('https://notepractice1-1.onrender.com/verify', {
       withCredentials: true
     });
 
