@@ -26,7 +26,7 @@ const handleUpdateNote = async (e) => {
   e.preventDefault();
 
   try {
-    await axios.put(`http://localhost:3000/edit-note/${editNoteId}`, {
+    await axios.put(`https://notepractice1-1.onrender.com/edit-note/${editNoteId}`, {
       title: editTitle,
       content: editContent
     }, {
@@ -39,7 +39,7 @@ const handleUpdateNote = async (e) => {
     setEditContent('');
 
     // Refresh notes
-    const res = await axios.get('http://localhost:3000/get-notes', { withCredentials: true });
+    const res = await axios.get('https://notepractice1-1.onrender.com/get-notes', { withCredentials: true });
     setNotes(res.data.notes);
   } catch (error) {
     console.error('Error updating note:', error);
@@ -50,12 +50,12 @@ const handleUpdateNote = async (e) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/verify', { withCredentials: true });
+        const response = await axios.get('https://notepractice1-1.onrender.com/verify', { withCredentials: true });
         setUser(response.data.user.username);
         setEmail(response.data.user.email);
 
         const fetchNotes = async () => {
-          const res = await axios.get('http://localhost:3000/get-notes', { withCredentials: true });
+          const res = await axios.get('https://notepractice1-1.onrender.com/get-notes', { withCredentials: true });
           setNotes(res.data.notes);
         };
 
@@ -72,7 +72,7 @@ const handleUpdateNote = async (e) => {
 
   const handleLogout = async () => {
     // Remove cookie by setting an empty one
-    await axios.post('http://localhost:3000/logout', {}, { withCredentials: true });
+    await axios.post('https://notepractice1-1.onrender.com/logout', {}, { withCredentials: true });
     navigate('/Login');
   };
 
@@ -83,14 +83,14 @@ const handleUpdateNote = async (e) => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:3000/create-note', { title, content }, {
+      await axios.post('https://notepractice1-1.onrender.com/create-note', { title, content }, {
         withCredentials: true
       });
 
       setTitle('');
       setContent('');
       // Fetch notes again after adding
-      const res = await axios.get('http://localhost:3000/get-notes', { withCredentials: true });
+      const res = await axios.get('https://notepractice1-1.onrender.com/get-notes', { withCredentials: true });
       setNotes(res.data.notes);
     } catch (error) {
       console.error('Error creating note:', error);
@@ -101,7 +101,7 @@ const handleUpdateNote = async (e) => {
    // e.preventDefault();
    // const noteId = e.target.parentElement.getAttribute('data-id'); // Get the note
     try {
-      await axios.delete(`http://localhost:3000/delete-note/${noteId}`, { withCredentials: true });
+      await axios.delete(`https://notepractice1-1.onrender.com/delete-note/${noteId}`, { withCredentials: true });
       // Remove the deleted note from state
       setNotes(notes.filter(note => note._id !== noteId));
     } catch (error) {
