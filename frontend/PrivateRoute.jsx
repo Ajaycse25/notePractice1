@@ -7,7 +7,7 @@ function PrivateRoute({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/verify', { withCredentials: true })
+    axios.get('https://notepractice1-1.onrender.com/verify', { withCredentials: true })
       .then(() => {
         setIsAuth(true);
         setLoading(false);
