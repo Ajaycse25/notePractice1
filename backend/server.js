@@ -95,8 +95,8 @@ app.post('/submit', (req, res) => {
                 const token = jwt.sign({ email: temp.email }, process.env.secret);
                 res.cookie("token", token, {
                     httpOnly: true,
-                    secure: false,
-                    sameSite: 'Lax',
+                    secure: true,
+                    sameSite: 'None',
                 });
                 console.log("User created successfully");
                 return res.status(200).json({ message: 'User created successfully. Redirecting to login.' });
@@ -126,8 +126,8 @@ app.post('/login', async (req, res) => {
             //console.log("Token generated:", token);
             res.cookie("token", token, {
                 httpOnly: true,
-                secure: false, // true in production with HTTPS
-                sameSite: 'Lax',
+                secure: true, // true in production with HTTPS
+                sameSite: 'None',
             });
 
             return res.status(200).json({ message: 'Login successful' });
