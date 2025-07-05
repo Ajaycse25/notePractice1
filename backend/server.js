@@ -12,7 +12,7 @@ const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 require('dotenv').config();
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://notepractice1-2.onrender.com',
     credentials: true
 }));
 app.use(express.json());
