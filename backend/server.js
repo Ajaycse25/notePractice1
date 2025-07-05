@@ -9,6 +9,7 @@ const user = require('./models/model');
 const Note = require('./models/noteSchema'); // Import the Note model
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+const PORT = process.env.PORT || 3000;
 app.use(cookieParser());
 require('dotenv').config();
 app.use(cors({
@@ -217,6 +218,6 @@ app.put('/edit-note/:id', authenticateToken, async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+app.listen(PORT, () => {
+    console.log("Server is running on port ${PORT}");
 })
