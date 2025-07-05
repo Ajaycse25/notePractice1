@@ -27,7 +27,7 @@ function SignUp() {
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const res = await axios.post('http://localhost:3000/submit', formData, 
+    const res = await axios.post('https://notepractice1-1.onrender.com/submit', formData, 
       {withCredentials: true});
    
     setFormData({ username: '', email: '', password: '' });
