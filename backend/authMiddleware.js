@@ -3,6 +3,8 @@ const userModel = require('./models/model'); // 👈 Import your user model
 
 const authenticateToken = async (req, res, next) => {
   const token = req.cookies.token;
+  console.log("Token from cookie:", token);
+if (!token) return res.status(401).json({ error: "Token missing" });
 
   if (!token) {
     return res.status(401).json({ error: 'No token, access denied' });
