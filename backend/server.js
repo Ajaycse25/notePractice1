@@ -10,13 +10,14 @@ const Note = require('./models/noteSchema'); // Import the Note model
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 3000;
-app.use(cookieParser());
+
 require('dotenv').config();
 app.use(cors({
     origin: 'https://notepractice1-2.onrender.com',
     credentials: true
 }));
 app.use(express.json());
+app.use(cookieParser());
 
 mongoose.connect(process.env.mongo_uri)
     .then(() => console.log("MongoDB connected"))
