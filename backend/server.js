@@ -20,7 +20,7 @@ app.use(cors({
 }));
 
 // ✅ Handle preflight requests
-app.options('*', cors({
+app.options('/*', cors({
     origin: 'https://notepractice1-2.onrender.com',
     credentials: true
 }));
