@@ -1,17 +1,10 @@
 const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const bcrypt = require('bcrypt');
 const cors = require('cors');
-const authenticateToken = require('./authMiddleware');
-const user = require('./models/model');
-const Note = require('./models/noteSchema'); // Import the Note model
-const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
-const PORT = process.env.PORT || 3000;
+const app = express();
 
 require('dotenv').config();
+
 app.use(cors({
     origin: 'https://notepractice1-2.onrender.com',
     credentials: true,
@@ -19,13 +12,28 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-✅ Handle preflight requests
-app.options('/*', cors({
+app.options('*', cors({
     origin: 'https://notepractice1-2.onrender.com',
     credentials: true
 }));
 app.use(express.json());
 app.use(cookieParser());
+
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const bcrypt = require('bcrypt');
+
+const authenticateToken = require('./authMiddleware');
+const user = require('./models/model');
+const Note = require('./models/noteSchema'); // Import the Note model
+const jwt = require('jsonwebtoken');
+
+const PORT = process.env.PORT || 3000;
+
+
+
+
+
 
 mongoose.connect(process.env.mongo_uri)
     .then(() => console.log("MongoDB connected"))
