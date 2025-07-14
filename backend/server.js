@@ -43,6 +43,11 @@ app.get("/api", (req, res) => {
     res.send("hello world")
 })
 
+app.get('/ping', (req, res) => {
+    res.send('pong');
+});
+
+
 // app.post('/submit', (req, res) => {
 //     const temp = req.body;
 //     console.log('Form Submission:', temp);
